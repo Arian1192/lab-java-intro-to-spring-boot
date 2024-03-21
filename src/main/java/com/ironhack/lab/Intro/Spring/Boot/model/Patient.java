@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "patient")
@@ -16,10 +18,11 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+
     private String name;
-    private String dateOfBirth;
+    private LocalDate dateOfBirth;
 
     @ManyToOne
-    @JoinColumn(name = "employee_id", referencedColumnName = "id")
-    private long admitted_by;
+    @JoinColumn(name = "admitted_by", referencedColumnName = "employeeId")
+    private Employee admittedBy;
 }
